@@ -1,2 +1,1 @@
-"# genSolar" 
 # genSolar
