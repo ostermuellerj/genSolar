@@ -1,6 +1,6 @@
 # Generating optimum-efficiency digital solar arrays using genetic algorithms, inspired by plant phyllotaxy. 
 
-This program defines a few basic characteristics of digital "plants" which are controlled using a genetic algorithm. Fitness of individual plants are evaluated by a unique parallel ray-casting algorithm that represents sun exposed area over time. 
+This program defines a few basic characteristics of digital "plants" which are controlled using a genetic algorithm. Fitness of individual plants are evaluated by a unique parallel ray-casting algorithm that represents sun exposed area over time. Won 4th Place in Bioinformatics/Computational Biology at Intel ISEF 2018.
 
 <img src="images/plant.png" width="600">
 
