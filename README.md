@@ -4,7 +4,7 @@ This program defines a few basic characteristics of digital "plants" which are c
 
 <img src="images/plant.png" width="600">
 
-There are three possible leaf functions (elliptic, acuminate, and cuneate) whose basic shape are described by the below functions:
+There are three possible leaf functions (elliptic, acuminate, and cuneate) whose basic shape are described by the below functions when each are reflected across the x-axis. Let l equal the length of the leaf and w equal the width of the leaf.
 
 <img src="images/leaf_functions.png" width="800">
 
