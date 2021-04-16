@@ -6,7 +6,7 @@ This program defines a few basic characteristics of digital "plants" which are c
 
 There are three possible leaf functions, whose basic shape are described by the below functions:
 
-<img src="images/leaf_functions.png" width="600">
+<img src="images/leaf_functions.png" width="800">
 
 The following diagram shows how the fitness algorithm simulates the sun's rays crossing the sky: 
 
@@ -19,3 +19,5 @@ The fitness is the average number of ray hits across all possible "above-ground"
 The following flowchart shows the genetic algorithm/process of plant selection:
 
 <img src="images/flowchart.png" width="600">
+
+Plants that recieve the best fitness scores (i.e. have high rates of sun exposed area over time) are more likely to pass their "genes" on to the next generation.
