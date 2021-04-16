@@ -1,0 +1,204 @@
+  CHARACTERISTICS:
+  
+  numLeaves 0
+  	0=Few
+  	1=Medium
+  	2=Many
+   	3=Most
+
+  leafCurl 1
+    0=None
+    1=Curl up
+    2=Curl down
+  
+  leafType 2
+  	0=Elliptic
+  	1=Acuminate
+  	2=Cuneate
+  	3=Parallel
+  
+  leafWidth 3
+  	0=Small
+  	1=Medium
+  	2=Large  
+  
+  leafLength 4
+  	0=Small
+  	1=Medium
+  	2=Large
+  
+  gradientLeafSize 5
+  	0=None
+  	1=Linear
+    2=Exponential
+  
+  stemHeight 6
+  	0=Short
+  	1=Medium
+  	2=Tall
+
+Characteristics:
+	-Height
+		short
+		Tall
+		Medium
+	-Slanted Stem
+	-Leaf Shape
+		Curled
+		Basic (Elliptic)
+			Skinny
+			Wide
+			Medium
+		Pear-Shaped (Ovate)
+		Parallel (Linear)
+	-Leaf Arrangement
+		Rings with Density
+		1-Sided
+		Phi-spaced
+
+To Do:
+	-Rotating fitness ✔
+	-Make stem shadow
+	-Disable rendering ✔
+		"l.beginShape() -> l.beginShape(POINTS)"
+	-Population selection
+	-Make characteristics
+	-Breeding
+		Trait-crossing
+		Plant saves
+		Generations
+		Stats
+
+
+-if (first generation): create random population
+-else: use n-1 population bred from mating pool
+-store in Plant arraylist
+-sort by fitness
+-write top perforer to output file
+-select breeders for mating pool from population
+-crossbread new population with random parents from
+ mating pool. Add percent chance for mutation
+
+
+
+
+
+
+from evaluate:
+// field1[x][y]= new PVector(x*(fwidth/fdensity)+field1_loc.x, 
+//                           y*(fheight/fdensity)+field1_loc.y,
+//                           field1_loc.z);
+// field2[x][y]= new PVector(x*(fwidth/fdensity)+field2_loc.x,
+//                           y*(fheight/fdensity)+field2_loc.y,
+//                           field2_loc.z);
+
+
+// field1[x][y] = rotateXY(x*(fwidth/fdensity)+field1_loc.x, y*(fheight/fdensity)+field1_loc.y, field1_loc.z);
+        // field2[x][y] = rotateXY(x*(fwidth/fdensity)+field2_loc.x, y*(fheight/fdensity)+field2_loc.y, field2_loc.z);
+
+        // field1[x][y] = rotateXY(x*(fwidth/fdensity)+field1_loc.x, y*(fheight/fdensity)+field1_loc.y, field1_loc.z);
+        // field2[x][y] = rotateXY(x*(fwidth/fdensity)+field2_loc.x, y*(fheight/fdensity)+field2_loc.y, field2_loc.z);                
+        // field1[x][y].x = rotate(x*(fwidth/fdensity)+field1_loc.x,field1_loc.z, fieldTheta).x;
+        // field1[x][y].z = rotate(x*(fwidth/fdensity)+field1_loc.x,field1_loc.z, fieldTheta).y;
+
+        // field2[x][y].x = rotate(x*(fwidth/fdensity)+field2_loc.x,field2_loc.z, fieldTheta).x;
+        // field2[x][y].z = rotate(x*(fwidth/fdensity)+field2_loc.x,field2_loc.z, fieldTheta).y;
+
+
+        // field1[x][y].y = rotate(field1[x][y].y,field1[x][y].z, fieldTheta).x;
+        // field1[x][y].z = rotate(field1[x][y].y,field1[x][y].z, fieldTheta).y;
+
+        // field2[x][y].y = rotate(field2[x][y].y,field2[x][y].z, fieldTheta).x;
+        // field2[x][y].z = rotate(field2[x][y].y,field2[x][y].z, fieldTheta).y;
+
+
+
+        // field2[x][y].x = rotate(field2[x][y].x,field2[x][y].z, PI/2).x;
+        // field2[x][y].z = rotate(field2[x][y].x,field2[x][y].z, PI/2).y;
+
+
+from rotatesomething:
+  // float[] xy = rotate(x,y,theta); //xy -> xz
+  // float[] xz = rotate(xy[0],z,phi);
+  // return new float[] {xz[0],xy[1],xz[1]};
+
+  // float[] xz = rotate(x,z,theta); //xz -> xy
+  // float[] xy = rotate(xz[0],y,phi);
+  // return new float[] {xy[0],xy[1],xz[1]};  
+
+  // return new float[] {x,y,z}; //normal
+
+
+from draw:
+  /*  for(int i=0; i<51;i++) //***
+  {
+   double start = millis();
+   Plant q = new Plant(leafNum, 100, 8, 10);
+   q.display();
+   q.evaluate();
+   double time = (millis()-start)/1000;
+   println(i + ", " + time + ", " + q.hits); //performance stats
+   //println(i + ", " + q.hits + ", " + q.leaves[0].getArea()); //area stats
+    
+   if(i==50) exit();
+  }
+*/  
+
+special leaf gen
+ /* Leaf(int leafID, float angle, float length, float width, float curl, float yLocation, int polyCount)
+  {
+    l = length;
+    w = width;
+    c = curl;
+    h = yLocation;
+    rotation = angle;
+    quads=polyCount;
+  }*/
+
+	
+PrintWriter output;
+
+void setup() {
+  // Create a new file in the sketch directory
+  output = createWriter("positions.txt"); 
+}
+
+void draw() {
+  point(mouseX, mouseY);
+  output.println(mouseX);  // Write the coordinate to the file
+}
+
+void keyPressed() {
+  output.flush();  // Writes the remaining data to the file
+  output.close();  // Finishes the file
+  exit();  // Stops the program
+}
+
+hours;minutes;seconds_2/10/18
+("plant_data/"+nf(hour(),2,0)+";"+)
+
+
+min(l*pow((2(x-w)/w),1/4),l*pow((2x/w),1/4)) //sqrt curve stuff
+min((l*pow((2(w-x)/w),1/4)),(l*pow((2x/w),1/4)))
+
+y=l*Math.sin(PI*pow(x-w,2)/pow(w,2));
+y=l*Math.sin(PI*sq((float)x-w)/sq(w));
+
+y=min(l*pow((2(w-(float)x)/w),1/4),l*pow((2*(float)x/w),1/4));
+
+l*pow((2*(float)x/w),1/4)
+
+
+
+335
+221
+220
++--
+776
+
+
+426
+274
+274
++--
+974
